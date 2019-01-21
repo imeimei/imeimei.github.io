@@ -1,0 +1,573 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Go 常量 - Keep It Simple</title>
+    <meta name="keywords" content="爱呆,博客,程序员,思考,读书,笔记,技术,分享,Golang">
+    
+    <meta property="og:title" content="Go 常量">
+    <meta property="og:site_name" content="Keep It Simple">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Go 常量 - Keep It Simple" />
+    <meta name="description" content="爱呆 | 博客 | 软件 | C&#43;&#43; | Golang"> 
+    
+    <link rel="shortcut icon" href="https://halohui.github.io/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://halohui.github.io/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://halohui.github.io/img/apple-touch-icon.png" />
+    <link href="https://halohui.github.io/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://halohui.github.io/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://halohui.github.io/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+
+<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://halohui.github.io/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Keep It Simple</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">一指流沙，程序年华</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/tags/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-tag"></i> <br />标签
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/post/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/categories/%E6%97%85%E8%A1%8C/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />旅行
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/categories/%E7%BE%8E%E9%A3%9F/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-fire"></i> <br />美食
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		<!-- src = "http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> <\!--  -\-> -->
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://halohui.github.io/post/go-const/" itemprop="url">
+        Go 常量
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">创建于:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2017-07-25">
+    2017-07-25
+</time>
+</span>
+&nbsp; | &nbsp;
+<span class="post-updated-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于:</span>
+<time itemprop="dateUpdated" content="2017-07-25">
+    2017-07-25
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://halohui.github.io/categories/go" itemprop="url" rel="index">
+        <span itemprop="name">Go</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-file-word-o"></i>
+</span>
+<span class="post-meta-item-text">字数统计:</span>
+<span class="leancloud-visitors-count">1576</span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-coffee"></i>
+</span>
+<span class="post-meta-item-text">阅读时长:</span>
+<span class="leancloud-visitors-count">4</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+      
+
+<blockquote>
+<p>常量是一种表达式，<font color=red>其可以保证在编译阶段计算出表达式的值</font>，并不需要等到运行时，从而使编译器得以知晓其值。所有常量<font color=red>本质上</font>都属于基本类型：布尔型，字符串或数字。</p>
+</blockquote>
+
+<h2 id="特别说明">特别说明</h2>
+
+<p>Go中<font color=red>常量可以是任意基本类型，也包括具名的基本类型</font>(例如<code>time.Duration</code>)。但是<font color=red>许多常量并不从属某一具体类型</font>。编译器将这些<font color=Orange>从属类型待定</font>的常量表示成某些值，<font color=Blue>这些值比基本类型的数字精度更高，且算术精度高于原生的机器精度，可以认为它们的精度至少达到<code>256</code>位。</font></p>
+
+<p>从属类型待定的常量共有<code>6</code>种，分别是：<font color=LightSeaGreen>①无类型布尔；②无类型整数；③无类型文字符号(例如<code>'a'</code>)；④无类型浮点数；⑤无类型复数；⑥无类型字符串</font>。</p>
+
+<p>借助<font color=Blue>推迟确定从属类型，无类型常量不仅能够暂时维持更高的精度</font>，与类型已确定的常量相比，还能写进更多的表达式无需类型转换。</p>
+
+<p>在Go中<font color=red>只有常量才可以是无类型的</font>。如果将无类型的常量声明为变量或者在类型明确的变量赋值的右方出现无类型的常量，则常量会被<font color=Blue>隐式转换</font>为该变量的类型：</p>
+
+<pre><code class="language-go">var f float64=3+0i //无类型复数-&gt;float64
+f=2      //无类型整数-&gt;float64
+f=1e123  //无类型浮点数-&gt;float64
+f='a'    //无类型文字符号-&gt;float64
+</code></pre>
+
+<p>不论隐式转换还是显式转换，<font color=Blue>常量从一种类型转换为另一种类型，都要求目标类型能够表示原值，实数和复数允许舍入取整</font>。</p>
+
+<pre><code class="language-go">const (
+    x =0xdeadbeef //无类型整数，值为3735928559
+    a = uint32(x) //unit32,值为3735928559没有超出范围
+    b = float32(x)//float32,值为3735928559
+    c = int32(x)  //编译错误，溢出
+    d = float64(1e309) //编译错误，溢出
+    f = uint(-1)  //编译错误，溢出，unit无法容纳-1
+    )
+</code></pre>
+
+<p>变量声明时（包括简短声明）中，<font color=Blue>假如没有显式指定类型，无类型常量会隐式转换为该变量的默认类型。</font>对于<code>bool</code>型来说为<code>false</code>，对于整型、浮点、复数来说为<code>0</code>，字符串为<code>“”</code>，引用类型为<code>nil</code>，复合类型为其基础类型的零值。</p>
+
+<pre><code class="language-go">i:=0 //无类型整数，隐式int(0）
+r:='\000' //无类型文字常量，隐式rune('\000')，这个要记住
+f:=0.0 //无类型浮点数，隐式float64(0.0)
+c:=0i //无类型整数，隐式complex128(0i)
+</code></pre>
+
+<hr />
+
+<h2 id="注意事项">注意事项</h2>
+
+<p>常量必须是<font color=red>编译期可确定</font>的字符、字符串、数字或布尔值。可指定常量类型，或由编译器通过初始化值推导，<font color=Blue>不支持<code>C/C++</code>的数字类型后缀</font>。</p>
+
+<p>定义常量的时候<font color=red>必须初始化</font>，否则编译错误。不同于<font color=Blue>未使用的局部变量</font>，<font color=red>不使用的常量不会引起编译错误。</font></p>
+
+<pre><code class="language-go">const x = 123
+fmt.Println(x)
+const y = 1.23
+{
+	const x = &quot;abc&quot;
+	fmt.Println(x)
+}
+</code></pre>
+
+<p>对于<font color=Blue>常量操作数，所有数学运算、逻辑运算和比较运算的结果依然是常量</font>。常量的类型转换结果和某些内置函数的返回值，例如<code>len,cap,real,imag,complex,unsafe.Sizeof</code>同样是常量，因此可以将这些函数作用于常量用于常量的初始化。</p>
+
+<p>在常量组中，如果不指定类型和初始化值，则与<font color=red>上一行非空常量右值（表达式文本）相同</font></p>
+
+<pre><code class="language-go">const (
+	x uint16 = 120
+	y
+	s = &quot;abc&quot;
+	z
+)
+fmt.Println(x, y, s, z) //120,120,abc,abc
+</code></pre>
+
+<p>数字常量在预处理阶段<font color=red>直接展开</font>，作为指令数据使用，<font color=red>不分配内存</font>，<font color=Blue>因此无法获取地址</font></p>
+
+<pre><code class="language-go">package main
+
+const y = 0x200
+
+func main() {
+	println(y)
+	//println(&amp;y)  // 错误，不能获取地址，这与C++有很大的区别
+}
+const t = y //同样无法获取t的地址
+</code></pre>
+
+<pre><code class="language-go">const x = 100    //x没有明确指定类型，也就是前面说的待定类型
+const y byte = x //直接展开x，相当于const y byte = 100
+</code></pre>
+
+<p>如果显式指定类型，<font color=Orange>必须确定常量左右值类型一致</font>，需要时可做显式转换，<font color=red>右值不能超出常量类型取值范围，否则会引起溢出错误。</font></p>
+
+<pre><code class="language-go">const (
+	t1, t2 int  = 99, -999
+	t3     byte = byte(t1) //t1 指定为int型，需显式转换为byte类型，注意于上一个例子的区别
+	//t4 = uint8(t2)  // 常量-999,超出了unit8的范围，会报溢出错误
+)
+</code></pre>
+
+<p>常量值可以是某些编译器能计算出结果的表达式，如 <code>unsafe.Sizeof、len、cap</code>，<font color=red>不能是运行时才能计算出结果的表达式</font>。因此<code>len</code>，<code>cap</code>等内置函数用于定义常量时，不能作用于变量。</p>
+
+<pre><code class="language-go">const (
+	ptrSize = unsafe.Sizeof(uintptr(0)) //8
+	strSize = len(&quot;hello world!&quot;)       //12
+	)
+</code></pre>
+
+<hr />
+
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://halohui.github.io/tags/go" rel="tag" title="Go">#Go#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://halohui.github.io/post/go-var/" rel="next" title="Go 变量定义">
+        <i class="fa fa-chevron-left"></i> Go 变量定义
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://halohui.github.io/post/go-iota/" rel="prev" title="Go 枚举">
+        Go 枚举 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+<div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+    <div style="float:left;margin-top:0px;">
+    <img src="https://i.loli.net/2018/12/16/5c15cbd7f2b61.jpg" width="128px" height="128px"/>
+    <div style="text-align:center;">谢谢支持!</div>
+    </div>
+    <div>
+        <p style="margin-top:10px;">
+            标题：Go 常量
+        <br />作者：<a target="_blank" href="https://halohui.github.io/">I呆呆</a>
+        
+        <br />地址：https://halohui.github.io/post/go-const/
+        <br />声明：自由转载-非商用-保持署名（创作共享3.0许可证）
+        </p>
+    </div>
+</div>
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+        src="https://halohui.github.io/img/mmhui.png"
+        alt="I呆呆" />
+    <p class="site-author-name" itemprop="name">I呆呆</p>
+    <p class="site-description motion-element" itemprop="description"> </p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://halohui.github.io/post/">
+        <span class="site-state-item-count">83</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://halohui.github.io/categories/">      
+         
+        <span class="site-state-item-count">17</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://halohui.github.io/tags/">
+         
+        <span class="site-state-item-count">16</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://coolshell.cn" target="_blank" title="酷 壳">
+            <i class="fa fa-fw fa-globe"></i>
+            酷 壳
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="http://www.ideamsg.com" target="_blank" title="灵 感">
+            <i class="fa fa-fw fa-globe"></i>
+            灵 感
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="http://www.ruanyifeng.com" target="_blank" title="阮一峰">
+            <i class="fa fa-fw fa-globe"></i>
+            阮一峰
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/qicosmos/" target="_blank" title="祁 宇">
+            <i class="fa fa-fw fa-github"></i>
+            祁 宇
+        </a>
+        </span>
+    
+</div>
+
+      
+      <div class="links-of-blogroll motion-element inline">
+
+
+</div>
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#特别说明">特别说明</a></li>
+<li><a href="#注意事项">注意事项</a></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2018 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">Keep It Simple</span>
+</div>
+
+  
+
+<div class="theme-info">
+  
+  
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?0b07433b4ab8d587dae7d34e71973839";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=58416275" charset="UTF-8"></script> 
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://halohui.github.io/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://halohui.github.io/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://halohui.github.io/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://halohui.github.io/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://halohui.github.io/js/utils.js"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/motion.js"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/affix.js"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://halohui.github.io/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/post-details.js"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/toc.js"></script>
+
+<script type="text/javascript" src="https://halohui.github.io/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://halohui.github.io/js/search.js"></script>
+</body>
+</html>

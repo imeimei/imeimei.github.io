@@ -1,0 +1,741 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>HTML入门 - Keep It Simple</title>
+    <meta name="keywords" content="爱呆,博客,程序员,思考,读书,笔记,技术,分享,Golang">
+    
+    <meta property="og:title" content="HTML入门">
+    <meta property="og:site_name" content="Keep It Simple">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="HTML入门 - Keep It Simple" />
+    <meta name="description" content="爱呆 | 博客 | 软件 | C&#43;&#43; | Golang"> 
+    
+    <link rel="shortcut icon" href="https://halohui.github.io/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://halohui.github.io/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://halohui.github.io/img/apple-touch-icon.png" />
+    <link href="https://halohui.github.io/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://halohui.github.io/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://halohui.github.io/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+
+
+<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/go.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://halohui.github.io/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Keep It Simple</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">一指流沙，程序年华</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/tags/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-tag"></i> <br />标签
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/post/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/categories/%E6%97%85%E8%A1%8C/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />旅行
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/categories/%E7%BE%8E%E9%A3%9F/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-fire"></i> <br />美食
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		<!-- src = "http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> <\!--  -\-> -->
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://halohui.github.io/post/html-%E5%85%A5%E9%97%A8/" itemprop="url">
+        HTML入门
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">创建于:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-06">
+    2018-12-06
+</time>
+</span>
+&nbsp; | &nbsp;
+<span class="post-updated-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于:</span>
+<time itemprop="dateUpdated" content="2018-12-06">
+    2018-12-06
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://halohui.github.io/categories/html" itemprop="url" rel="index">
+        <span itemprop="name">html</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-file-word-o"></i>
+</span>
+<span class="post-meta-item-text">字数统计:</span>
+<span class="leancloud-visitors-count">2567</span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-coffee"></i>
+</span>
+<span class="post-meta-item-text">阅读时长:</span>
+<span class="leancloud-visitors-count">6</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+      
+
+<h1 id="简介">简介</h1>
+
+<p><code>HTML</code>指的是超文本标记语言 (<code>Hyper Text Markup Language</code>)，它<font color=Blue>不是一种编程语言</font>，而<font color=red>是一种标志语言</font>，标记语言是<font color=red>一套标记标签</font>，使用标记标签来描述网页。</p>
+
+<hr />
+
+<h1 id="htm-or-html">.htm or .html</h1>
+
+<p>当保存<code>HTML</code>文件时，可以使用<code>.htm</code>,也可以使用<code>.html</code>文件后缀。使用<code>.htm</code>,这只是<font color=Blue>长久以来形成的习惯</font>，因为<font color=red>过去的很多软件只允许三个字母的文件后缀</font>。对于新的软件，使用<code>.html</code>完全没有问题。</p>
+
+<hr />
+
+<h1 id="html标签">HTML标签</h1>
+
+<p><code>HTML</code>标签是由<font color=Blue>尖括号包围的关键词</font>，比如<code>&lt;html&gt;</code>。标签通常是成对出现的「也有可能是单个出现」，比如<code>&lt;b&gt;</code>和<code>&lt;/b&gt;</code>；标签对中的第一个标签时开始标签，第二个标签是结束标签。</p>
+
+<hr />
+
+<h1 id="html元素">HTML元素</h1>
+
+<p><code>HTML</code>文档用于描述网页「<code>HTML</code>文档也被称为网页」，文档<font color=red>包含<code>HTML</code>标签和纯文本</font>。<code>HTML</code>元素，指的是从开始标签(<code>start tag</code>)到结束标签(<code>end tag</code>)的<font color=red>所有代码</font>。元素的内容是开始标签与结束标签之间的内容。</p>
+
+<p>某些<code>HTML</code>元素具有空内容，没有内容的<code>HTML</code>元素被称为空元素。<font color=red>空元素在开始标签中进行关闭</font>。大多数<code>HTML</code>元素可拥有属性。</p>
+
+<pre><code class="language-html">&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;测试&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr />
+
+<h1 id="html属性">HTML属性</h1>
+
+<p>属性提供了有关<code>HTML</code>元素的更多的信息，属性总是以<code>名称/值</code>对的形式出现，比如：<code>name=&quot;value&quot;</code>：</p>
+
+<ul>
+<li><p>属性总是在<code>HTML</code>元素的<font color=Blue>开始标签中</font>规定。</p></li>
+
+<li><p>属性和属性值对<font color=red>大小写不敏感</font>。不过，万维网联盟在其<code>HTML 4</code>推荐标准中<font color=Blue>推荐小写的属性/属性值</font>。而新版本的<code>(X)HTML</code><font color=red>要求使用小写属性</font>。</p></li>
+
+<li><p>属性值应该<font color=red>始终被包括在引号内</font>，<font color=Blue>双引号是最常用的</font>，不过使用单引号也没有问题。</p></li>
+</ul>
+
+<pre><code class="language-html">&lt;a href=&quot;http://www.w3school.com.cn&quot;&gt;This is a link&lt;/a&gt;
+</code></pre>
+
+<hr />
+
+<h1 id="外部样式表">外部样式表</h1>
+
+<pre><code class="language-html">&lt;head&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;head&gt;
+&lt;link href=&quot;./style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+</code></pre>
+
+<hr />
+
+<h1 id="内部样式表">内部样式表</h1>
+
+<pre><code class="language-html">&lt;head&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+body {background-color: red}
+p {margin-left: 20px}
+&lt;/style&gt;
+&lt;/head&gt;
+</code></pre>
+
+<hr />
+
+<h1 id="内联样式表">内联样式表</h1>
+
+<pre><code class="language-html">&lt;p style=&quot;color: red; margin-left: 20px&quot;&gt;
+This is a paragraph
+&lt;/p&gt;
+</code></pre>
+
+<hr />
+
+<h1 id="超链接">超链接</h1>
+
+<p>超链接可以是一个字，一个词，或者一组词，也可以是一副图像，你可以点击这些内容来跳转到新的文档或者当前文档的某个部分。</p>
+
+<p>通过使用<code>&lt;a&gt;</code>标签在<code>HTML</code>中创建新链接，可以有两种使用超链接的方式：</p>
+
+<ul>
+<li><p>通过使用<code>href</code>属性创建指向另一个文档的链接。</p></li>
+
+<li><p>通过使用<code>name</code>属性，创建文档内的书签（锚）。</p></li>
+</ul>
+
+<hr />
+
+<h2 id="页面间跳转">页面间跳转</h2>
+
+<pre><code class="language-html">&lt;a href=&quot;http://www.w3school.com.cn/&quot;&gt;Visit W3School&lt;/a&gt;
+&lt;a href=&quot;http://www.w3school.com.cn/html/html_links.asp#tips&quot;&gt;有用的提示&lt;/a&gt;&lt;!--从其他页面创建指向该页面的锚--&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="页面内跳转">页面内跳转</h2>
+
+<p>页面内的跳转需要两个步骤：</p>
+
+<ul>
+<li><p>设置一个锚点链接<code>&lt;a href=&quot;#miao&quot;&gt;去找喵星人&lt;/a&gt;</code>。需要注意的是要在<code>href</code>的属性值<code>value</code>前加<code>#</code>。</p></li>
+
+<li><p>在页面中需要的位置设置一个锚点<code>&lt;a name=&quot;miao&quot;&gt;&lt;/a&gt;</code>，标签中按需填写必要的文字，<font color=Blue>一般不写内容</font>。设置锚点有两种方式</p>
+
+<ol>
+<li><p><code>&lt;a name=&quot;miao&quot;&gt;&lt;/a&gt;</code>。</p></li>
+
+<li><p><code>&lt;h3 id=&quot;miao&quot;&gt;喵星人基地&lt;/h3&gt;</code>。这种方式不用单独添加一个<code>a</code>标签来设置<font color=red>锚点</font>。</p></li>
+</ol></li>
+</ul>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;utf-8&quot;&gt;
+	&lt;title&gt;测试&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;#miao&quot;&gt;去找喵星人&lt;/a&gt;&lt;/li&gt;  &lt;!--同一个文档中创建指向该锚的链接--&gt;
+        &lt;li&gt;&lt;a href=&quot;#wang&quot;&gt;去找汪星人&lt;/a&gt;&lt;/li&gt;  &lt;!--同一个文档中创建指向该锚的链接--&gt;
+        &lt;li&gt;&lt;a href=&quot;#meng&quot;&gt;其他萌物&lt;/a&gt;&lt;/li&gt;    &lt;!--同一个文档中创建指向该锚的链接--&gt;
+    &lt;/ul&gt;
+
+    &lt;a name=&quot;miao&quot;&gt;&lt;/a&gt;&lt;!--设置锚点方法1--&gt;
+    &lt;h3 id=&quot;miao&quot;&gt;喵星人基地&lt;/h3&gt;&lt;!--设置锚点方法2--&gt;
+    &lt;p&gt;喵喵喵~&lt;/p&gt;
+    &lt;p&gt;喵喵喵~&lt;/p&gt;
+    &lt;p&gt;喵喵喵~&lt;/p&gt;
+    &lt;p&gt;喵喵喵~&lt;/p&gt;
+    &lt;p&gt;喵喵喵~&lt;/p&gt;
+    &lt;p&gt;喵喵喵~&lt;/p&gt;
+    
+    &lt;a name=&quot;wang&quot;&gt;&lt;/a&gt;
+    &lt;p&gt;汪汪汪~&lt;/p&gt;
+    &lt;p&gt;汪汪汪~&lt;/p&gt;
+    &lt;p&gt;汪汪汪~&lt;/p&gt;
+    &lt;p&gt;汪汪汪~&lt;/p&gt;
+    &lt;p&gt;汪汪汪~&lt;/p&gt;
+    &lt;p&gt;汪汪汪~&lt;/p&gt;
+
+    &lt;a name=&quot;meng&quot;&gt;&lt;/a&gt;
+    &lt;p&gt;萌萌萌~&lt;/p&gt;
+    &lt;p&gt;萌萌萌~&lt;/p&gt;
+    &lt;p&gt;萌萌萌~&lt;/p&gt;
+    &lt;p&gt;萌萌萌~&lt;/p&gt;
+    &lt;p&gt;萌萌萌~&lt;/p&gt;
+    &lt;p&gt;萌萌萌~&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><a href="https://www.cnblogs.com/qiujianmei/p/7111600.html">参考资料</a></p>
+
+<hr />
+
+<h2 id="图片">图片</h2>
+
+<p>在<code>HTML</code>中，图像由<code>&lt;img&gt;</code>标签定义，<font color=red><code>&lt;img&gt;</code>是空标签，即只包含属性，没有闭合标签</font>。</p>
+
+<pre><code class="language-html">&lt;img src=&quot;https://i.loli.net/2018/12/06/5c09153160635.jpg&quot; alt=&quot;none&quot;&gt; &lt;!--`alt`属性表示当图片找不到时，应该显示的替换文本--&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="span标签">span标签</h2>
+
+<p><code>span</code>标签表示<font color=red>无语义行内元素</font>，常用来组合文档内的行内元素，以便通过样式来格式化它们。</p>
+
+<hr />
+
+<h2 id="类">类</h2>
+
+<p>可以为元素表设置类，然后为相同的类定义<code>CSS</code>样式：</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+.cities {
+    background-color:black;
+    color:white;
+    margin:20px;
+    padding:20px;
+} 
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;div class=&quot;cities&quot;&gt;
+&lt;h2&gt;London&lt;/h2&gt;
+&lt;p&gt;London is the capital city of England. 
+It is the most populous city in the United Kingdom, 
+with a metropolitan area of over 13 million inhabitants.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;cities&quot;&gt;
+&lt;h2&gt;Paris&lt;/h2&gt;
+&lt;p&gt;Paris is the capital and most populous city of France.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;cities&quot;&gt;
+&lt;h2&gt;Tokyo&lt;/h2&gt;
+&lt;p&gt;Tokyo is the capital of Japan, the center of the Greater Tokyo Area,
+and the most populous metropolitan area in the world.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><img src="https://i.loli.net/2018/12/07/5c09e0aa4c59e.jpg" alt="-c400" /></p>
+
+<hr />
+
+<h1 id="html布局">HTML布局</h1>
+
+<p><code>&lt;div&gt;</code>元素常用于布局工具，因为能够轻松通过<code>CSS</code>对其进行定位，下面这个例子使用<code>4</code>个<code>&lt;div&gt;</code>元素来创建多列布局：</p>
+
+<pre><code class="language-html">&lt;body&gt;
+
+&lt;div id=&quot;header&quot;&gt;
+&lt;h1&gt;City Gallery&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;nav&quot;&gt;
+London&lt;br&gt;
+Paris&lt;br&gt;
+Tokyo&lt;br&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;section&quot;&gt;
+&lt;h1&gt;London&lt;/h1&gt;
+&lt;p&gt;
+London is the capital city of England. It is the most populous city in the United Kingdom,
+with a metropolitan area of over 13 million inhabitants.
+&lt;/p&gt;
+&lt;p&gt;
+Standing on the River Thames, London has been a major settlement for two millennia,
+its history going back to its founding by the Romans, who named it Londinium.
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;footer&quot;&gt;
+Copyright W3School.com.cn
+&lt;/div&gt;
+
+&lt;/body&gt;
+</code></pre>
+
+<p><img src="https://i.loli.net/2018/12/07/5c09e3edc31ae.jpg" alt="-c600" /></p>
+
+<pre><code class="language-css">&lt;style&gt;
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:300px;
+    width:100px;
+    float:left;
+    padding:5px; 
+}
+#section {
+    width:350px;
+    float:left;
+    padding:10px; 
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px; 
+}
+&lt;/style&gt;
+</code></pre>
+
+<hr />
+
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://halohui.github.io/tags/html" rel="tag" title="html">#html#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://halohui.github.io/post/css%E5%85%A5%E9%97%A8/" rel="next" title="CSS入门">
+        <i class="fa fa-chevron-left"></i> CSS入门
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+<div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+    <div style="float:left;margin-top:0px;">
+    <img src="http://oqe76o492.bkt.clouddn.com/wechatpay.png" width="129px" height="129px"/>
+    <div style="text-align:center;">谢谢支持!</div>
+    </div>
+    <div>
+        <p style="margin-top:0px;">
+            标题：HTML入门
+        <br />作者：<a target="_blank" href="https://halohui.github.io/">辉呆</a>
+        <br />关注：公众号尚未开通🌹
+        <br />地址：https://halohui.github.io/post/html-%E5%85%A5%E9%97%A8/
+        <br />声明：自由转载-非商用-非衍生-保持署名（创作共享3.0许可证）
+        </p>
+    </div>
+</div>
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+    <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+        src="https://halohui.github.io/img/author.png"
+        alt="辉呆" />
+    <p class="site-author-name" itemprop="name">辉呆</p>
+    <p class="site-description motion-element" itemprop="description"> </p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://halohui.github.io/post/">
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://halohui.github.io/categories/">      
+         
+        <span class="site-state-item-count">14</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://halohui.github.io/tags/">
+         
+        <span class="site-state-item-count">14</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://coolshell.cn" target="_blank" title="酷 壳">
+            <i class="fa fa-fw fa-globe"></i>
+            酷 壳
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="http://www.ideamsg.com" target="_blank" title="灵 感">
+            <i class="fa fa-fw fa-globe"></i>
+            灵 感
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="http://www.ruanyifeng.com" target="_blank" title="阮一峰">
+            <i class="fa fa-fw fa-globe"></i>
+            阮一峰
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/qicosmos/" target="_blank" title="祁 宇">
+            <i class="fa fa-fw fa-github"></i>
+            祁 宇
+        </a>
+        </span>
+    
+</div>
+
+      
+      <div class="links-of-blogroll motion-element inline">
+
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/8.js?i=01oe9lr44m5&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script>
+</div>
+    </section>
+    
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2009 - 2018</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">Keep It Simple</span>
+</div>
+<div class="powered-by">
+  由<a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>强力驱动
+</div>
+<div class="theme-info">
+  主题-<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?0b07433b4ab8d587dae7d34e71973839";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=58416275" charset="UTF-8"></script> 
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://halohui.github.io/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://halohui.github.io/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://halohui.github.io/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://halohui.github.io/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://halohui.github.io/js/utils.js"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/motion.js"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/affix.js"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://halohui.github.io/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/post-details.js"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/toc.js"></script>
+
+<script type="text/javascript" src="https://halohui.github.io/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://halohui.github.io/js/search.js"></script>
+</body>
+</html>

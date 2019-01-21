@@ -1,0 +1,1611 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>剑指offer题集1 - Keep It Simple</title>
+    <meta name="keywords" content="爱呆,博客,程序员,思考,读书,笔记,技术,分享,Golang">
+    
+    <meta property="og:title" content="剑指offer题集1">
+    <meta property="og:site_name" content="Keep It Simple">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="剑指offer题集1 - Keep It Simple" />
+    <meta name="description" content="爱呆 | 博客 | 软件 | C&#43;&#43; | Golang"> 
+    
+    <link rel="shortcut icon" href="https://halohui.github.io/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://halohui.github.io/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://halohui.github.io/img/apple-touch-icon.png" />
+    <link href="https://halohui.github.io/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://halohui.github.io/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://halohui.github.io/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+
+<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://halohui.github.io/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Keep It Simple</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">一指流沙，程序年华</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/tags/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-tag"></i> <br />标签
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/post/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/categories/%E6%97%85%E8%A1%8C/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />旅行
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/categories/%E7%BE%8E%E9%A3%9F/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-fire"></i> <br />美食
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://halohui.github.io/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		<!-- src = "http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> <\!--  -\-> -->
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://halohui.github.io/post/arith-sword-1/" itemprop="url">
+        剑指offer题集1
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">创建于:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2017-08-16">
+    2017-08-16
+</time>
+</span>
+&nbsp; | &nbsp;
+<span class="post-updated-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于:</span>
+<time itemprop="dateUpdated" content="2017-08-16">
+    2017-08-16
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://halohui.github.io/categories/%E7%AE%97%E6%B3%95" itemprop="url" rel="index">
+        <span itemprop="name">算法</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-file-word-o"></i>
+</span>
+<span class="post-meta-item-text">字数统计:</span>
+<span class="leancloud-visitors-count">4614</span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-coffee"></i>
+</span>
+<span class="post-meta-item-text">阅读时长:</span>
+<span class="leancloud-visitors-count">10</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+      
+
+<h2 id="二维数组中查找">二维数组中查找</h2>
+
+<p>在一个二维数组中，<font color=Blue>每一行都按从左到右递增的顺序排序，每一列都按从上到下递增</font>的顺序排列，试从该二维数组查找给定的元素。</p>
+
+<p>首先应该从右上角的元素(记为<code>cur</code>)开始比较，如果当前要查找的元素<code>key</code>的值比<code>cur</code>大，那么就应该往<code>cur</code>所在行的下面开始寻找；如果<code>key</code>的值比<code>cur</code>小，那么应该往<code>cur</code>所在列的左边寻找，具体代码如下：</p>
+
+<pre><code class="language-cpp">bool findKeyInMatrix(int *matrix, int rows, int colums, int key) 
+{
+  bool found = false;
+
+  if (matrix != nullptr &amp;&amp; rows &gt;= 0 &amp;&amp; colums &gt;= 0) {
+    int row = 0;
+    int column = colums - 1; //row=0,column=colums-1表示定位到右上角的元素
+    int cur = 0；
+
+    while (row &lt; rows &amp;&amp; colums &gt;= 0) 
+    {
+      cur = matrix[row * colums + column];
+      if (cur == key) 
+      {
+        found = true;
+        break;
+      } else if (cur &gt; key) 
+      {
+        column--;
+      } else 
+      {
+        row++;
+      }
+    }
+  }
+  return found;
+}
+</code></pre>
+
+<hr />
+
+<h2 id="字符串的赋值操作符重载">字符串的赋值操作符重载</h2>
+
+<p>对于自定义的字符串类的赋值操作符的重载时，需要注意<code>4</code>点：①是否传入常引用<code>const A &amp;</code>。②传入的引用是否是自身。 ③是否释放掉原来的空间。 ④是否返回<code>*this</code>。</p>
+
+<pre><code class="language-cpp">class CMyString
+{
+private:
+    char *pdata;
+public:
+    CMyString(char * ptr =NULL);
+    CMyString(const CMyString &amp;str);
+    CMyString &amp;operator=(const CMyString &amp;str);
+    }
+    ~CMyString(){}
+};
+
+CMyString &amp;CMyString::operator=(const CMyString &amp;str)
+{
+    if(this != &amp;str)
+    {
+        CMyString tmp(str);
+        char * ptmp = tmp.pdata;
+        tmp.pdata = pdata;
+        pdata = ptmp;
+    }
+    return *this;
+}
+</code></pre>
+
+<p>在这个赋值操作符重载函数中，首先创建了一个临时变量<code>tmp</code>，<font color=red>如果分配内存不成功的话，那么会抛出<code>bad_alloc</code>异常，此时也不会修改原来的对象实例</font>。</p>
+
+<p>如果正常分配的话，因为<font color=Blue><code>tmp</code>是临时变量，所以在<code>if</code>的作用域结束之后，那么会自动调用析构函数，此时就会析构掉<code>tmp.pdata</code>所指向的内存</font>。因为<code>tmp.pdata</code>已经和<code>pdata</code>交换了，所以这相当于自动调用析构函数释放实例的内存。</p>
+
+<hr />
+
+<h2 id="从尾到头打印链表">从尾到头打印链表</h2>
+
+<p>从尾到头打印链表中的元素，有两种解决方法，一种是递归算法，另一种是利用栈来实现非递归算法。下面是递归算法的实现：</p>
+
+<pre><code class="language-cpp">void recPrintLinkedList(LinkedNode *head)
+{
+    if (head != nullptr)
+    {
+        recPrintLinkedList(head-&gt;next);
+        std::cout&lt;&lt;head-&gt;data&lt;&lt;&quot;\t&quot;;
+    }
+}
+</code></pre>
+
+<p>非递归算法是<font color=Blue>借助栈的后进先出的特性</font>，首先遍历链表的所有元素，并将它们存入到栈中。当遍历完栈的时候就可以出栈：</p>
+
+<pre><code class="language-cpp">void nonRecPrintLinkedList(LinkedNode *head)
+{
+    if(head != nullptr)
+    {
+        stack&lt;LinkedNode*&gt; st;
+        LinkedNode * cur = head;
+        
+        while(cur != nullptr)
+        {
+            st.push(cur);
+            cur = cur-&gt;next;
+        }
+        
+        while(!st.empty())
+        {
+            cur = st.top();
+            st.pop();
+            std::cout&lt;&lt;cur-&gt;data&lt;&lt;'\t';
+        }
+    }
+}
+</code></pre>
+
+<hr />
+
+<h2 id="两个栈实现队列">两个栈实现队列</h2>
+
+<p>将<code>stack1</code>作为入队使用， 将<code>stack2</code>作为出队使用。当<code>stack2</code>不空时，就从<code>stack2</code>直接弹出元素，否则将<code>stack1</code>里元素先全部弹出到<code>stack2</code>中，再从<code>stack2</code>中弹出，这样便实现了先进先出。</p>
+
+<pre><code class="language-cpp">template &lt;typename T&gt;
+class stackQueue 
+{
+ public:
+  stackQueue(void){};
+  ~stackQueue(){};
+  void push(const T &amp;node);
+  void pop();
+  T &amp;top();
+
+ private:
+  stack&lt;T&gt; stack1;
+  stack&lt;T&gt; stack2;
+};
+
+template &lt;typename T&gt;
+void stackQueue&lt;T&gt;::push(const T &amp;node) 
+{
+  stack1.push(node);
+}
+
+template &lt;typename T&gt;
+void stackQueue&lt;T&gt;::pop() 
+{
+  if (stack2.empty()) {
+    while (!stack1.empty()) 
+    {
+      stack2.push(stack1.top());
+      stack1.pop();
+    }
+  }
+  if (stack2.empty()) 
+    throw string(&quot;queue is empty!&quot;);
+  
+  stack2.pop();
+}
+
+template &lt;typename T&gt;
+T &amp;stackQueue&lt;T&gt;::top() 
+{
+  return stack2.top();
+}
+</code></pre>
+
+<hr />
+
+<h2 id="两个队列实现一个栈">两个队列实现一个栈</h2>
+
+<p><font color=red>总是保持一个队列是空</font>，出栈的时候将不空的那个队列的前$n-1$个元素都放到空的那个队列里，然后出剩下的那一个元素；入队的时候入到不空的那个队列里。</p>
+
+<pre><code class="language-cpp">template &lt;typename  T&gt; class queueStack
+{
+public:
+    queueStack(void){};
+    ~queueStack(){};
+    void push(const T &amp; node);
+    T pop();
+
+private:
+    queue&lt;T&gt; queue1;
+    queue&lt;T&gt; queue2;
+};
+
+template &lt;typename T&gt;void queueStack&lt;T&gt;::push(const T &amp;node)
+{
+    if(queue1.empty() &amp;&amp; queue2.empty())
+    {
+        queue1.push(node);
+    }
+    else if(queue1.empty())
+    {
+        queue1.push(node);
+    }
+    else if(queue2.empty())
+    {
+        queue2.push(node);
+    }
+    else
+        throw string(&quot;Error!&quot;);
+}
+
+template &lt;typename T&gt;T queueStack&lt;T&gt;::pop()
+{
+   if(!queue1.empty() &amp;&amp; queue2.empty())
+   {
+       while(queue1.size() != 1)
+       {
+          queue2.push(queue1.front());
+          queue1.pop();
+       }
+       T &amp; data = queue1.front();
+       queue1.pop();
+       return  data;
+   }
+    else if(queue1.empty() &amp;&amp; !queue2.empty())
+   {
+       while(queue2.size() != 1)
+       {
+           queue1.push(queue2.front());
+           queue2.pop();
+       }
+       T &amp; data = queue2.front();
+       queue2.pop();
+       return  data;
+   }
+    else
+       throw string(&quot;Error!&quot;);
+}
+</code></pre>
+
+<hr />
+
+<h2 id="快速排序">快速排序</h2>
+
+<p>快速排序中，基准元素的选择有<code>3</code>种方式：①选择待排序区间左边的第一个元素。②选择待排序空间的中间元素。③随机从待排序区间中选择一个元素。下面的代码是随机选择基准元素：</p>
+
+<pre><code class="language-cpp">int quickSortPartition(int *input, int length, int start, int end)
+{
+    if (input == nullptr || start &lt; 0 || length &lt;= 0 || end &gt;= length)
+    {
+        return -1;  // 参数错误
+    }
+
+    srand(time(NULL));  //C风格
+
+    int index = rand() % (end - start + 1);
+    int small = start - 1;
+
+    swap(input[index], input[end]);
+    for (int i = start; i &lt; end; ++i)
+    {
+        if (input[i] &lt; input[end])
+        {
+            small++;
+            if (small &lt; i)
+            {
+                swap(input[small], input[i]);
+            }
+        }
+    }
+    
+    small++;
+    swap(input[small], input[end]);
+    return small;
+}
+
+void quickSortMore(int *input, int length, int start, int end)
+{
+   if (start == end)
+       return;
+    
+    int index = quickSortPartition(input,length,start,end);
+    
+    if (index &gt; start)
+        quickSortMore(input,length,start,index-1);
+    
+    if (end &gt; index)
+        quickSortMore(input,length,index+1,end);
+}
+</code></pre>
+
+<hr />
+
+<h2 id="旋转数组中的最小值">旋转数组中的最小值</h2>
+
+<p>把<font color=Blue>一个数组的最开始的若干元素移动到数组的末尾</font>，称之为数组的旋转。输入一个递增的数组的一个旋转，找到数组中的最小元素。</p>
+
+<p>最简单的方法是从头到尾遍历一遍数组，就可以找到最小的元素，但是<font color=red>这种方法没有用到旋转数组的前部和后部是有序这一特点</font>。</p>
+
+<pre><code class="language-cpp">int findSpinArrayMin(int *data, int length)
+{
+    if (data == nullptr || length &lt; 0)
+        return -1;
+
+    int start = 0;
+    int end = length - 1;
+    int mid, result = -1;
+
+    while (data[start] &gt;= data[end])
+    {
+        if (end - start == 1)
+        {
+           mid = end;
+           break;
+        }
+        mid = (start + end) / 2;
+
+        if (data[start] == data[mid] &amp;&amp; data[mid] == data[end])
+        {
+            return minInOrder(data, start, end);
+        }
+
+        if (data[mid] &gt;= data[end])
+            start = mid;
+
+        else if (data[mid] &lt;= data[end])
+            end = mid;
+    }
+
+    return data[mid];
+}
+
+int minInOrder(int *data, int start, int end)
+{
+    int result = data[start];
+
+    for (int i = start + 1; i &lt;= end; ++i)
+    {
+        if (result &gt; data[i])
+            result = data[i];
+    }
+    return result;
+}
+</code></pre>
+
+<hr />
+
+<h2 id="斐波那契数列">斐波那契数列</h2>
+
+<p>首先根据定义很容易想到递归算法，但是递归算法会重复计算很多次，所以实际上浪费了很多资源</p>
+
+<pre><code class="language-cpp">long long recFibonacci(unsigned int n)
+{
+    if (n &lt;= 1)
+        return n;
+    else
+        return recFibonacci(n - 1) + recFibonacci(n - 2);
+}
+</code></pre>
+
+<p>使用非递归解法，不必重复计算</p>
+
+<pre><code class="language-cpp">long long nonRecFibonacci(unsigned int n)
+{
+    if (n &lt;= 1)
+        return n;
+
+    long long first = 0, second = 1, result = 0;
+
+    for (int i = 2; i &lt;= n; i++)
+    {
+        result = first + second;
+        first = second;
+        second = result;
+    }
+
+    return result;
+}
+</code></pre>
+
+<hr />
+
+<h2 id="数组的整数次方">数组的整数次方</h2>
+
+<p>实现函数<code>double power(double base,int exponent)</code>,求 <code>base</code>的<code>expoent</code>次方，不使用库函数，同时不考虑大数问题。但是在这个问题上需要考虑base接近于0的情况。</p>
+
+<pre><code class="language-cpp">double power(double base, int exponent)
+{
+    double result = 1.0;
+    unsigned int absExponent = (unsigned int) (exponent);
+
+    if (base &gt; 0.000001 &amp;&amp; base &lt; 0.000001 &amp;&amp; exponent &lt; 0)
+        return 0;
+
+
+    if (exponent &lt; 0)
+    {
+        absExponent = (unsigned int) (-exponent);
+    }
+
+    for (unsigned  int i = 0; i &lt; absExponent; ++i)
+    {
+        result *= base;
+    }
+
+    if (exponent &lt; 0)
+        result = 1.0 / result;
+
+
+    return result;
+}
+</code></pre>
+
+<p>优化的方法，使用如下方法</p>
+
+<p><img src="http://oqe76o492.bkt.clouddn.com/屏幕快照 2017-08-17 下午2.42.37.png" alt="c600" /></p>
+
+<pre><code class="language-cpp">double powerOptimize(double base, int exponent)
+{
+    if (exponent == 0)
+        return 1;
+
+    if (exponent == 1)
+        return base;
+
+    double result = powerOptimize(base, exponent &gt;&gt; 1);
+    result *= result;
+
+    if ((exponent &amp; 0x1) == 1)
+        result *= base;
+
+    return result;
+}
+</code></pre>
+
+<hr />
+
+<h2 id="打印1到最大的n位数">打印1到最大的n位数</h2>
+
+<p>输入数字 n，打印1到最大的 n 位十进制数</p>
+
+<pre><code class="language-cpp">void printNdigits(unsigned int n)
+{
+    auto *digits = new char[n + 1];
+    memset(digits, '0', (n + 1) * sizeof(char));
+    digits[n] = '\0';
+
+    while (!incrementByone(digits))
+    {
+        printNumber(digits);
+    }
+    delete[] digits;
+}
+
+bool incrementByone(char *digits)
+{
+    int length = strlen(digits);
+    bool isOverFlow = false;
+    int takeOver = 0;
+    int cur = 0;
+
+    for (auto i = length-1; i &gt;= 0; --i)
+    {
+      cur = digits[i]-'0'+takeOver;
+       if( i==length-1) 
+            cur ++;
+        
+        if(cur &gt; 10)
+        {
+            if(i == 0)
+                isOverFlow = true;
+            else
+            {
+                cur -= 10;
+                digits[i]='0'+cur;
+                takeOver =1;
+            }
+            
+        }
+        else
+        {
+            digits[i]='0'+cur;
+            break;
+        }
+    }
+
+    return isOverFlow;
+}
+
+void printNumber(const char *digits)
+{
+    if (digits != nullptr)
+    {
+        while (*digits == '0')
+        {
+            digits++;
+        }
+        cout &lt;&lt; digits &lt;&lt; endl;
+    }
+}
+</code></pre>
+
+<p>递归方式，如果将前面的数字补0的话，就会发现n位所有十进制数其实就是n个从0开始到9的全排列，就是把数字从0到9排列一遍，就得到了十进制的全排列。</p>
+
+<pre><code class="language-cpp">void newPrintNdigts(unsigned int n)
+{
+    auto *digits = new char[n + 1];
+    digits[n] = '\0';
+
+    for (int i = 0; i &lt; 10; ++i)
+    {
+        digits[0] =char(i+'0');
+        recPrintNdigits(digits,n,0);
+    }
+    delete[] digits;
+}
+
+void recPrintNdigits(char *digits, int length, int index)
+{
+    if(index == length-1)
+    {
+        printNumber(digits);
+        return;
+    } 
+
+    for (int i = 0; i &lt; 10; ++i)
+    {
+        digits[index+1] = char(i+'0');
+        recPrintNdigits(digits,length,index+1);
+    }
+}
+</code></pre>
+
+<hr />
+
+<h2 id="在o-1-时间内删除节点">在O(1)时间内删除节点</h2>
+
+<p>在 $O(1)$ 时间复杂度内删除某个节点,假设要删除的节点一定在链表中。如果删除的不是尾节点，则只要将它的下一个节点的数据移到该节点即可。</p>
+
+<pre><code class="language-cpp">void deleteLinkedNode(LinkedNode * &amp;root, LinkedNode * key)
+{
+    if( root == nullptr  || key == nullptr || !isNodeInLinkedList(root, key))
+        return;
+
+    if(key-&gt;next != nullptr)  //删除的如果不是尾节点
+    {
+        LinkedNode * next = key-&gt;next;
+        key-&gt;data = next-&gt;data;
+        key-&gt;next = next-&gt;next;
+        delete next;
+        next = nullptr;
+    }
+    else if( root-&gt;next == nullptr) //删除的是尾节点，而且链表只有一个节点
+    {
+        delete root;
+        root = nullptr;
+    } else //删除的是尾节点，且链表不止一个节点
+    {
+        LinkedNode * pre = root;
+        LinkedNode * cur = root-&gt;next;
+
+        while(cur != nullptr )
+        {
+            pre = cur;
+            cur = cur-&gt;next;
+        }
+        pre-&gt;next = nullptr;
+        delete cur;
+        cur = nullptr;
+    }
+}
+</code></pre>
+
+<hr />
+
+<h2 id="链表中的倒数第-k-个节点">链表中的倒数第 k 个节点</h2>
+
+<p>输入一个链表，输出该链表中的倒数第 k 个节点，其中链表的尾节点为倒数第1个节点</p>
+
+<p>基本思路是用两个指针，其中第一个游标先向前走 <code>k-1</code>次，然后和另外一个游标一起往前走，如果第一个游标走到尾节点，那么第二个游标也就到了倒数第 <code>k</code>个节点。</p>
+
+<pre><code class="language-cpp">LinkedNode *findLastKthNodeFaster(LinkedNode *root, int k)
+{
+    if( root == nullptr || k &lt;= 0)
+        return nullptr;
+
+    LinkedNode * cur = root;
+    LinkedNode * result = root;
+
+    for (int i = 0; i &lt; k-1; ++i)
+    {
+        if (cur-&gt;next != nullptr)  //要考虑k的值是否超过了链表的总节点数目
+            cur = cur-&gt;next;
+        else
+            return nullptr;
+    }
+    while (cur != nullptr)
+    {
+        cur = cur-&gt;next;
+        result = result-&gt;next;
+    }
+    return result;
+}
+
+</code></pre>
+
+<hr />
+
+<h2 id="反转链表">反转链表</h2>
+
+<p>定义一个函数，输入一个链表的头节点，反转该链表并输出反转后链表的头结点。分为递归和非递归解法，非递归使用头插法即可</p>
+
+<pre><code class="language-cpp">LinkedNode * reverseLinkedList(LinkedNode *pHead)
+{
+    if (pHead == nullptr)
+        return nullptr;
+    
+    LinkedNode *newHead = pHead;
+    LinkedNode *cur = pHead-&gt;next;
+    newHead-&gt;next = nullptr;
+
+    LinkedNode *next = nullptr;
+
+    while (cur != nullptr)
+    {
+        next = cur-&gt;next;
+        cur-&gt;next = newHead;
+        newHead = cur;
+        cur = next;
+    }
+
+    return newHead;
+}
+</code></pre>
+
+<p>递归解法</p>
+
+<pre><code class="language-cpp">LinkedNode *recurReversionLinkedList(LinkedNode *head)
+{
+    LinkedNode *cur = nullptr;
+    LinkedNode *tmp = nullptr;
+    LinkedNode *recurHead = nullptr;
+
+    if(head == nullptr)
+    {
+        return nullptr;
+    }
+
+    if(head-&gt;next == nullptr)
+        return  head;
+    else
+    {
+        cur = head;
+        tmp = head-&gt;next;
+        recurHead = recurReversionLinkedList(tmp); //得到反转之后的头节点
+        tmp-&gt;next = cur; //此时tmp就是最后一个节点了,应该将cur放到此时的最后一个节点tmp的后面
+        cur-&gt;next = nullptr;
+        return  recurHead;
+    }
+}
+</code></pre>
+
+<hr />
+
+<h2 id="压缩字符串">压缩字符串</h2>
+
+<p>给定一段字符串，仅压缩连续重复出现的字符，例如字符串<code>abcbc</code>压缩后为<code>1a1b1c</code>，<code>xxxyyyyzz</code>压缩后为<code>3x4y2z</code></p>
+
+<pre><code class="language-cpp">void compressString(const char *src)
+{
+    assert(src != nullptr);
+    auto length = strlen(src);
+
+    auto *result = new char[2 * length + 1];  //当字符都不相同时，压缩后的字符串长度变为原来的2倍
+
+    int i = 0, j = 0, k = 0;
+    char cur;
+
+    while (src[i] != '\0')
+    {
+        cur = src[i];
+        j = i + 1;
+        while (src[j] == cur)
+        {
+            j++;
+        }
+
+        result[k++] = (char) (j - i + '0');
+        result[k++] = cur;
+        i = j;
+    }
+    result[k] = '\0';
+    cout &lt;&lt; result &lt;&lt; endl;
+    delete[] result;
+}
+</code></pre>
+
+<hr />
+
+<h2 id="删除多余空格">删除多余空格</h2>
+
+<p>在不开辟额外空间的情况下删除开始和结尾处的空格，并将中间的多个连续的空格合成一个。</p>
+
+<pre><code class="language-cpp">void deleteSpaces2(char *str)
+{
+    auto length = strlen(str);
+    auto i = length - 1;
+    int j =0;
+
+    while (str[i] == ' ')  i--;
+    str[i+1] = '\0';
+
+    i = 0;
+    while (str[i] == ' ') i++;
+
+
+    while(str[i] != '\0')
+    {
+        str[j++] = str[i++];
+
+        if(str[i] == ' ')
+        {
+            while(str[i] == ' ') i++;
+            str[j++] = ' ';
+        }
+    }
+    str[j] = '\0';
+    cout&lt;&lt;&quot;***&quot;&lt;&lt;str&lt;&lt;&quot;***&quot;&lt;&lt;endl;
+}
+</code></pre>
+
+<hr />
+
+<h2 id="合并两个有序的链表">合并两个有序的链表</h2>
+
+<p>当得到两个链表中值较小的头节点并把它链接到已经合并的链表之后，<font color=red>两个链表剩余的节点依然是有序的</font>，因此合并的步骤和之前的步骤一样。</p>
+
+<pre><code class="language-cpp">LinkedNode *mergeOrderLinkedList(LinkedNode *head1, LinkedNode *head2)
+{
+    if (head1 == nullptr)
+        return head2;
+    else if (head2 == nullptr)
+        return head1;
+
+    LinkedNode *mergeHead = nullptr;
+
+    if (head1-&gt;data &lt;= head2-&gt;data)
+    {
+        mergeHead = head1;
+        mergeHead-&gt;next = mergeOrderLinkedList(head1-&gt;next, head2);
+    } else
+    {
+        mergeHead = head2;
+        mergeHead-&gt;next = mergeOrderLinkedList(head1, head2-&gt;next);
+    }
+
+    return mergeHead;
+}
+</code></pre>
+
+<hr />
+
+<h2 id="树的子结构">树的子结构</h2>
+
+<p>输入两棵二叉树 A 和 B，判断 B 是不是 A 的子树</p>
+
+<pre><code class="language-cpp">bool hasSubTree(BinTreeNode *root1, BinTreeNode *root2)
+{
+    bool result = false;
+    if(root1 != nullptr &amp;&amp; root2 != nullptr )
+    {
+        if(root1-&gt;data == root2-&gt;data)
+           result = DoesTree1HasTree2(root1,root2);
+        
+        if(false == result)
+        {
+            result = hasSubTree(root1-&gt;leftChild,root2);
+        }
+        
+        if(false == result)
+        {
+            result = hasSubTree(root1-&gt;rightChild,root2);
+        }
+    }
+    
+    return result;
+}
+
+bool DoesTree1HasTree2(BinTreeNode *root1, BinTreeNode *root2)
+{
+    if(root2 == nullptr)
+        return true;
+    else if(root1 == nullptr)
+        return false;
+    
+    if(root1-&gt;data != root2-&gt;data)
+        return false;
+    
+    
+    return DoesTree1HasTree2(root1-&gt;rightChild,root2-&gt;leftChild) &amp;&amp; DoesTree1HasTree2(root1-&gt;rightChild,root2-&gt;rightChild);
+}
+</code></pre>
+
+<hr />
+
+<h2 id="树的镜像">树的镜像</h2>
+
+<p>先前序遍历这棵树的每一个节点，如果遍历到的节点有子节点则交换它们，当交换完所有的非叶子节点的左右子节点之后，就得到了树的镜像</p>
+
+<pre><code class="language-cpp">void changeToMirror(BinTreeNode *root)
+{
+    if (root == nullptr)
+        return;
+
+    if (root-&gt;leftChild == nullptr &amp;&amp; root-&gt;rightChild == nullptr)
+        return;
+
+    BinTreeNode *tmp;
+    tmp = root-&gt;leftChild;
+    root-&gt;leftChild = root-&gt;rightChild;
+    root-&gt;rightChild = tmp;
+    
+    if(nullptr != root-&gt;leftChild)
+        changeToMirror(root-&gt;leftChild);
+    
+    if(nullptr != root-&gt;rightChild)
+        changeToMirror(root-&gt;rightChild);
+}
+</code></pre>
+
+<hr />
+
+<h2 id="顺时针打印矩阵">顺时针打印矩阵</h2>
+
+<pre><code class="language-cpp">void clockwisePrintMatrix(int **input, int columns, int rows)
+{
+    if (input == nullptr || columns &lt; 0)
+        return;
+
+    int start = 0;
+    while (columns &gt; start * 2 &amp;&amp; rows &gt; start * 2) //打印进行的条件
+    {
+        printMatrixInCircle(input, columns, rows, start);
+        start++;
+    }
+}
+
+void printMatrixInCircle(int **input, int rows, int columns, int start)
+{
+    int endX = columns - 1 - start; //记录行的最右边
+    int endY = rows - 1 - start;    //记录列的最下边
+
+    //从左往右打印一行
+    for (int i = start; i &lt;= endX ; ++i)
+    {
+        cout&lt;&lt;input[start][i]&lt;&lt;&quot;\t&quot;;
+    }
+
+    //从上往下打印一列
+    for (int i = start+1;  i&lt;= endY; ++i)
+    {
+        cout&lt;&lt;input[i][endX]&lt;&lt;&quot;\t&quot;;
+    }
+
+    for (int i = endX-1; i &gt;=start ; --i)
+    {
+        cout&lt;&lt;input[endY][i]&lt;&lt;&quot;\t&quot;;
+    }
+
+    for (int i = endY-1; i &gt; start ; --i)
+    {
+        cout&lt;&lt;input[i][start]&lt;&lt;&quot;\t&quot;;
+    }
+    
+    cout&lt;&lt;endl;
+}
+</code></pre>
+
+<hr />
+
+<h2 id="包含min函数的栈">包含min函数的栈</h2>
+
+<p>定义栈的数据结构，在该类型中实现一个能够得到栈的最小元素的<code>min</code>函数。</p>
+
+<p>利用一个辅助栈，<font color=red>每次将最小的元素（当前最小和入栈压入的新元素比较）都保存在这个辅助栈中。当弹出元素时，辅助栈中的元素也弹出一个</font>。</p>
+
+<hr />
+
+<h2 id="判断正确的出栈序列">判断正确的出栈序列</h2>
+
+<p>输入两个整数序列，第一个表示栈的压入顺序，第二个表示弹出序列，判断弹出序列是否是第一个压入序列的有效弹出序列。</p>
+
+<p>使用一个辅助栈来保存压入序列，如果下一个弹出的数字刚好是栈顶数字，那么直接弹出，<font color=red>如果下一个弹出的数字不在栈顶，则把压栈序列中还未压入的数字压入到栈中，直到把下一个需要弹出的数字压入到栈顶为止，</font>如果所有数字都压入到栈中了还未找到下一个弹出的数字，那么该序列就不是合法的弹出序列。</p>
+
+<p>下面这个是针对与栈中元素是整型变量的：</p>
+
+<pre><code class="language-cpp">bool isPopOrder(const int *pushOrder, const int *popOrder, int length)
+{
+    bool result = false;
+    const int *nextPush = pushOrder;
+    const int *nextPop = popOrder;
+    stack&lt;int&gt; st;
+
+    if (pushOrder != nullptr &amp;&amp; popOrder != nullptr &amp;&amp; length &gt; 0)
+    {
+        while ((nextPop - popOrder) &lt; length)
+        {
+            while (st.empty() || *nextPop != st.top())
+            {
+                if ((nextPush - pushOrder) == length)
+                    break;
+
+                st.push(*nextPush);
+                nextPush++;
+            }
+
+            if (st.top() != *nextPush)
+                break;
+
+            nextPop++;
+            st.pop();
+        }
+
+        if (st.empty() &amp;&amp; (nextPop - popOrder == length))
+            result = true;
+    }
+
+    return result;
+}
+</code></pre>
+
+<p>这个是针对于栈中元素是字符型</p>
+
+<pre><code class="language-cpp">bool isPopOrder(const char *pushOrder, const char *popOrder)
+{
+    bool result = false;
+    auto length = strlen(pushOrder);
+
+    if(popOrder != nullptr &amp;&amp; pushOrder != nullptr &amp;&amp; length == strlen(popOrder))
+    {
+        stack&lt;char&gt; st;
+        const char * nextPush = pushOrder;
+        const char * nextPop = popOrder;
+
+        while(*nextPop != '\0')
+        {
+            while(st.empty() || *nextPop != st.top())
+            {
+                if(*nextPush == '\0')
+                    break;
+
+                st.push(*nextPush);
+                nextPush++;
+            }
+
+            if(*nextPop != st.top())
+                break;
+
+            nextPop++;
+            st.pop();
+        }
+
+        if(st.empty() &amp;&amp; *nextPop == '\0')
+            result = true;
+    }
+
+    return result;
+}
+</code></pre>
+
+<hr />
+
+<h2 id="二叉搜索树的后序遍历序列">二叉搜索树的后序遍历序列</h2>
+
+<p>输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果，如果是则返回true，不是则返回false</p>
+
+<pre><code class="language-cpp">bool verifySquenceOfBST(int *input, int length)
+{
+    bool result = false;
+
+    if (input == nullptr || length &lt;= 0)
+        return result;
+
+    int cur = input[length - 1];  //根节点
+    int index = 0;
+    int mid = 0;
+
+    while (index &lt; length &amp;&amp; input[index] &lt; cur)
+    {
+        index++;
+    }
+    mid = index;
+
+    while (index &lt; length &amp;&amp; input[index] &gt; cur)
+    {
+        index++;
+    }
+
+    if (index == length - 1) //注意边界判断
+    {
+        bool left = false, right = false;
+        if (mid &gt; 0)
+            left = verifySquenceOfBST(input, mid);
+
+        if (mid &lt; length - 1)
+            right = verifySquenceOfBST(input + mid, length - mid - 1);
+
+        result = left &amp;&amp; right;
+    }
+
+    return result;
+}
+</code></pre>
+
+<hr />
+
+<h2 id="二叉树中从根开始和为某一值的路径">二叉树中从根开始和为某一值的路径</h2>
+
+<p>输入一棵二叉树和一个整数，打印二叉树中节点值的和为输入整数的所有路径。<font color=red>从树的根节点开始往下一直到<font color=Orange>某一节点</font>所经过的节点形成一条路径</font>。</p>
+
+<pre><code class="language-cpp">void findPath(BinTreeNode *root, int sum)
+{
+    if (root == nullptr)
+        return;
+
+    vector&lt;char&gt; path;
+    int currentSum = 0;
+    findPath(root, path, sum, currentSum);
+}
+
+void findPath(BinTreeNode *root, vector&lt;char&gt; &amp;path, int sum, int currentsum)
+{
+    currentsum += root-&gt;data;
+    path.push_back(root-&gt;data);
+    if (sum == currentsum)
+    {
+        for (auto it = path.begin(); it != path.end(); it++)
+        {
+            cout &lt;&lt; *it &lt;&lt; '\t';
+        }
+        cout &lt;&lt; endl;
+    }
+
+    if (root-&gt;leftChild != nullptr)
+    {
+        findPath(root-&gt;leftChild, path, currentsum, sum);
+    }
+
+    if (root-&gt;rightChild != nullptr)
+    {
+        findPath(root-&gt;rightChild, path, currentsum, sum);
+    }
+
+    path.pop_back();
+}
+</code></pre>
+
+<p>不用vector算法的写法：</p>
+
+<pre><code class="language-cpp">void printSumPath(BinTreeNode *root, char *path, int length, int sum)
+{
+    if (root == nullptr)
+        return;
+
+    path[length] = root-&gt;data;
+    sum -= root-&gt;data;
+    length++;
+
+    if (0 == sum)
+    {
+        for (int i = 0; i &lt;= length; ++i)
+        {
+            cout &lt;&lt; path[i];
+        }
+        cout &lt;&lt; endl;
+    }
+
+    if (root-&gt;leftChild != nullptr)
+    {
+        printSumPath(root-&gt;leftChild, path, length, sum);
+    }
+
+    if (root-&gt;rightChild != nullptr)
+    {
+        printSumPath(root-&gt;rightChild, path, length, sum);
+    }
+
+    length--;  //减不减其实无所谓
+}
+</code></pre>
+
+<hr />
+
+<h2 id="二叉树中和为某一值的路径">二叉树中和为某一值的路径</h2>
+
+<p>一棵二叉树每个节点包含一个整数，设计一个算法输出所有满足条件的路径：在此路径上所有给定的节点之和为给定值，<font color=red>不必从根节点开始</font></p>
+
+<pre><code class="language-cpp">void printSumPath(BinTreeNode *root, vector&lt;char&gt; &amp;path, int sum, int level)
+{
+   if(root != nullptr)
+   {
+       path.push_back(root-&gt;data);
+       
+       int currentSum = sum;
+
+       for (int i = level; i &gt;=0; ++i)
+       {
+           currentSum-=path[i];
+           
+           if(currentSum == 0)
+               printSumPath(path,i,level);
+       }
+       level++;
+       if(root-&gt;leftChild != nullptr)
+           printSumPath(root-&gt;leftChild,path,sum,level);
+       
+       if(root-&gt;rightChild != nullptr)
+           printSumPath(root-&gt;rightChild,path,sum,level);
+       
+       path.pop_back();
+   }
+}
+
+void printSumPath(vector&lt;char&gt; path, int start, int end)
+{
+    for (int i = start; i &lt;= end; ++i)
+    {
+        cout&lt;&lt;path[i]&lt;&lt;'\t';
+    }
+    cout&lt;&lt;endl;
+}
+</code></pre>
+
+<hr />
+
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://halohui.github.io/tags/%e7%ae%97%e6%b3%95" rel="tag" title="算法">#算法#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://halohui.github.io/post/cpp-smart-pointer/" rel="next" title="C&#43;&#43;智能指针">
+        <i class="fa fa-chevron-left"></i> C&#43;&#43;智能指针
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://halohui.github.io/post/arith-loser-tree/" rel="prev" title="败者树">
+        败者树 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+<div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+    <div style="float:left;margin-top:0px;">
+    <img src="https://i.loli.net/2018/12/16/5c15cbd7f2b61.jpg" width="128px" height="128px"/>
+    <div style="text-align:center;">谢谢支持!</div>
+    </div>
+    <div>
+        <p style="margin-top:10px;">
+            标题：剑指offer题集1
+        <br />作者：<a target="_blank" href="https://halohui.github.io/">I呆呆</a>
+        
+        <br />地址：https://halohui.github.io/post/arith-sword-1/
+        <br />声明：自由转载-非商用-保持署名（创作共享3.0许可证）
+        </p>
+    </div>
+</div>
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+        src="https://halohui.github.io/img/mmhui.png"
+        alt="I呆呆" />
+    <p class="site-author-name" itemprop="name">I呆呆</p>
+    <p class="site-description motion-element" itemprop="description"> </p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://halohui.github.io/post/">
+        <span class="site-state-item-count">83</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://halohui.github.io/categories/">      
+         
+        <span class="site-state-item-count">17</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://halohui.github.io/tags/">
+         
+        <span class="site-state-item-count">16</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://coolshell.cn" target="_blank" title="酷 壳">
+            <i class="fa fa-fw fa-globe"></i>
+            酷 壳
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="http://www.ideamsg.com" target="_blank" title="灵 感">
+            <i class="fa fa-fw fa-globe"></i>
+            灵 感
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="http://www.ruanyifeng.com" target="_blank" title="阮一峰">
+            <i class="fa fa-fw fa-globe"></i>
+            阮一峰
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/qicosmos/" target="_blank" title="祁 宇">
+            <i class="fa fa-fw fa-github"></i>
+            祁 宇
+        </a>
+        </span>
+    
+</div>
+
+      
+      <div class="links-of-blogroll motion-element inline">
+
+
+</div>
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#二维数组中查找">二维数组中查找</a></li>
+<li><a href="#字符串的赋值操作符重载">字符串的赋值操作符重载</a></li>
+<li><a href="#从尾到头打印链表">从尾到头打印链表</a></li>
+<li><a href="#两个栈实现队列">两个栈实现队列</a></li>
+<li><a href="#两个队列实现一个栈">两个队列实现一个栈</a></li>
+<li><a href="#快速排序">快速排序</a></li>
+<li><a href="#旋转数组中的最小值">旋转数组中的最小值</a></li>
+<li><a href="#斐波那契数列">斐波那契数列</a></li>
+<li><a href="#数组的整数次方">数组的整数次方</a></li>
+<li><a href="#打印1到最大的n位数">打印1到最大的n位数</a></li>
+<li><a href="#在o-1-时间内删除节点">在O(1)时间内删除节点</a></li>
+<li><a href="#链表中的倒数第-k-个节点">链表中的倒数第 k 个节点</a></li>
+<li><a href="#反转链表">反转链表</a></li>
+<li><a href="#压缩字符串">压缩字符串</a></li>
+<li><a href="#删除多余空格">删除多余空格</a></li>
+<li><a href="#合并两个有序的链表">合并两个有序的链表</a></li>
+<li><a href="#树的子结构">树的子结构</a></li>
+<li><a href="#树的镜像">树的镜像</a></li>
+<li><a href="#顺时针打印矩阵">顺时针打印矩阵</a></li>
+<li><a href="#包含min函数的栈">包含min函数的栈</a></li>
+<li><a href="#判断正确的出栈序列">判断正确的出栈序列</a></li>
+<li><a href="#二叉搜索树的后序遍历序列">二叉搜索树的后序遍历序列</a></li>
+<li><a href="#二叉树中从根开始和为某一值的路径">二叉树中从根开始和为某一值的路径</a></li>
+<li><a href="#二叉树中和为某一值的路径">二叉树中和为某一值的路径</a></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2018 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">Keep It Simple</span>
+</div>
+
+  
+
+<div class="theme-info">
+  
+  
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?0b07433b4ab8d587dae7d34e71973839";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=58416275" charset="UTF-8"></script> 
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://halohui.github.io/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://halohui.github.io/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://halohui.github.io/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://halohui.github.io/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://halohui.github.io/js/utils.js"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/motion.js"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/affix.js"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://halohui.github.io/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/post-details.js"></script>
+<script type="text/javascript" src="https://halohui.github.io/js/toc.js"></script>
+
+<script type="text/javascript" src="https://halohui.github.io/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://halohui.github.io/js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工具 on 时光清浅</title>
+    <link>https://imeimei.github.io/categories/%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 工具 on 时光清浅</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 06 Jan 2019 22:39:26 +0000</lastBuildDate>
+    
+	<atom:link href="https://imeimei.github.io/categories/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>papers教程</title>
+      <link>https://imeimei.github.io/post/tool-papers-usage/</link>
+      <pubDate>Sun, 06 Jan 2019 22:39:26 +0000</pubDate>
+      
+      <guid>https://imeimei.github.io/post/tool-papers-usage/</guid>
+      <description>Papers软件对自己的定位为个人科研图书馆，其主要功能包括文献收集(Find)、文献整理(Organize)、文献阅读(Read)和文献引</description>
+    </item>
+    
+  </channel>
+</rss>

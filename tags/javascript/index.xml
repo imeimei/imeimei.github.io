@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript on Keep It Simple</title>
+    <link>https://halohui.github.io/tags/javascript/</link>
+    <description>Recent content in Javascript on Keep It Simple</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 17 Dec 2018 08:34:15 +0000</lastBuildDate>
+    
+	<atom:link href="https://halohui.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>给图片添加点击监听</title>
+      <link>https://halohui.github.io/post/js-img/</link>
+      <pubDate>Mon, 17 Dec 2018 08:34:15 +0000</pubDate>
+      
+      <guid>https://halohui.github.io/post/js-img/</guid>
+      <description>给所有图片添加监听 function setImagesClick(){ $(&#39;body&#39;).on(&#39;click&#39;,&#39;img&#39;,function(){ let position = this.offsetTop; //当前元素距离顶部的距离 //window.scrollTo(0,position) let result = {}; result.position = position.toString() let jsonString = JSON.stringify(result); let escapedJsonString = encodeURI(jsonString); //重新编码 let scheme = &amp;quot;position://&amp;quot;; document.location.href = scheme + &amp;quot;#&amp;quot; + escapedJsonString; //向ios发送</description>
+    </item>
+    
+  </channel>
+</rss>

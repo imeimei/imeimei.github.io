@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Swfit on Keep It Simple</title>
+    <link>https://halohui.github.io/tags/swfit/</link>
+    <description>Recent content in Swfit on Keep It Simple</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 14 Sep 2018 09:31:40 +0000</lastBuildDate>
+    
+	<atom:link href="https://halohui.github.io/tags/swfit/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>swift中的方法</title>
+      <link>https://halohui.github.io/post/swift-method/</link>
+      <pubDate>Fri, 14 Sep 2018 09:31:40 +0000</pubDate>
+      
+      <guid>https://halohui.github.io/post/swift-method/</guid>
+      <description>方法是关联了特定类型的函数。类，结构体，枚举类型都能定义实例方法，方法封装了给定类型特定的任务和功能。 实例方法 实例方法是属于特定实例（结构体</description>
+    </item>
+    
+  </channel>
+</rss>
