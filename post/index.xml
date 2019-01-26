@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 时光清浅</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 06 Jan 2019 22:39:26 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 Jan 2019 09:46:59 +0000</lastBuildDate>
     
 	<atom:link href="https://imeimei.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>论文格式注意事项</title>
+      <link>https://imeimei.github.io/post/mei-paper-attention/</link>
+      <pubDate>Wed, 23 Jan 2019 09:46:59 +0000</pubDate>
+      
+      <guid>https://imeimei.github.io/post/mei-paper-attention/</guid>
+      <description>论文结构 论文结构分为前置部分，主体部分和后置部分： 前置部分 论文题目一般不超过25个字。 摘要一般应说明研究工作目的、实验方法、结果和最终结论等</description>
+    </item>
     
     <item>
       <title>papers教程</title>
