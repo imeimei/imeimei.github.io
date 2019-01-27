@@ -6,10 +6,19 @@
     <description>Recent content on 时光清浅</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 23 Jan 2019 09:46:59 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 26 Jan 2019 20:55:44 +0000</lastBuildDate>
     
 	<atom:link href="https://imeimei.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>自制模板中需要修改的地方</title>
+      <link>https://imeimei.github.io/post/mei-paper-modify/</link>
+      <pubDate>Sat, 26 Jan 2019 20:55:44 +0000</pubDate>
+      
+      <guid>https://imeimei.github.io/post/mei-paper-modify/</guid>
+      <description>考虑到蒋老师年前要交初稿，时间紧迫，就根据下载的格式要求结合我之前的毕业论文，同时参考一个华师朋友的论文，自己做了一个模板。但是，对于不同的</description>
+    </item>
     
     <item>
       <title>论文格式注意事项</title>
