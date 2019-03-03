@@ -6,10 +6,19 @@
     <description>Recent content on 时光清浅</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 26 Jan 2019 20:55:44 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 Mar 2019 11:14:27 +0000</lastBuildDate>
     
 	<atom:link href="https://imeimei.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>并排显示图片</title>
+      <link>https://imeimei.github.io/post/mei-word-images/</link>
+      <pubDate>Sun, 03 Mar 2019 11:14:27 +0000</pubDate>
+      
+      <guid>https://imeimei.github.io/post/mei-word-images/</guid>
+      <description>使用Word写论文时，有时候需要将两张图片并排显示，以更清晰美观的展示作者的意图，这篇文章将讲解怎么将两张图片并排显示。 效果图 效果图如下所示</description>
+    </item>
     
     <item>
       <title>自制模板中需要修改的地方</title>
