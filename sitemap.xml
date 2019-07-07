@@ -1,5 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <search>
+    
+     <entry>
+        <title>PaperFree的使用</title>
+        <url>https://imeimei.github.io/post/mei-paper-check-free/</url>
+        <categories>
+          <category>paper</category>
+        </categories>
+        <tags>
+          <tag>paper</tag>
+        </tags>
+        <content type="html">   去年的毕业论文是用PaperFree查了第一遍（一个帐号可以查一遍），发现效果还不错。刚刚看了一下，今年一个帐号只能免费查2万字。虽然只有两万字，但分两次就可以把蒋老师的论文查完了，现在写一个简单的教程供蒋老师使用。
+ 注册帐号 首先到PaperFree的官网注册帐号，如下图所示有两种方式注册帐号，一种是使用手机注册，一种是使用QQ快速登录：
+使用手机注册 如果选择使用手机注册，则点击上图箭头所指的使用手机注册，进入如下界面：
+按照提示填写手机号，用户名，密码和验证码即可完成注册：
+注册成功之后，出现下面的提示：
+</content>
+    </entry>
+    
+     <entry>
+        <title>Posts</title>
+        <url>https://imeimei.github.io/post/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> </content>
+    </entry>
     
      <entry>
         <title>并排显示图片</title>
@@ -163,15 +191,16 @@
     </entry>
     
      <entry>
-        <title>Posts</title>
-        <url>https://imeimei.github.io/post/</url>
+        <title>论文初稿需要修改的地方</title>
+        <url>https://imeimei.github.io/post/mei-paper-modify-v1/</url>
         <categories>
-          
+          <category>paper</category>
         </categories>
         <tags>
-          
+          <tag>paper</tag>
         </tags>
-        <content type="html"> </content>
+        <content type="html">  第一章 第1页 第一处 第1页的第一段太长，应该适当缩短: 第二处 出现严重心理疾患这里应该拿一个新闻或者一篇文章来作论证：
+</content>
     </entry>
     
 </search>

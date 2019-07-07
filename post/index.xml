@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 时光清浅</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 03 Mar 2019 11:14:27 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 14 Mar 2019 22:11:45 +0000</lastBuildDate>
     
 	<atom:link href="https://imeimei.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PaperFree的使用</title>
+      <link>https://imeimei.github.io/post/mei-paper-check-free/</link>
+      <pubDate>Thu, 14 Mar 2019 22:11:45 +0000</pubDate>
+      
+      <guid>https://imeimei.github.io/post/mei-paper-check-free/</guid>
+      <description>去年的毕业论文是用PaperFree查了第一遍（一个帐号可以查一遍），发现效果还不错。刚刚看了一下，今年一个帐号只能免费查2万字。虽然只有两</description>
+    </item>
     
     <item>
       <title>并排显示图片</title>
@@ -45,6 +54,15 @@
       
       <guid>https://imeimei.github.io/post/tool-papers-usage/</guid>
       <description>Papers软件对自己的定位为个人科研图书馆，其主要功能包括文献收集(Find)、文献整理(Organize)、文献阅读(Read)和文献引</description>
+    </item>
+    
+    <item>
+      <title>论文初稿需要修改的地方</title>
+      <link>https://imeimei.github.io/post/mei-paper-modify-v1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://imeimei.github.io/post/mei-paper-modify-v1/</guid>
+      <description>第一章 第1页 第一处 第1页的第一段太长，应该适当缩短: 第二处 出现严重心理疾患这里应该拿一个新闻或者一篇文章来作论证：</description>
     </item>
     
   </channel>
